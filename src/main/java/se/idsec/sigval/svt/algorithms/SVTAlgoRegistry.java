@@ -24,7 +24,7 @@ import java.util.Map;
  * to be added. By default only RSA and ECDSA with SHA 245, 384 and 512 are supported.
  */
 public class SVTAlgoRegistry {
-  private static Map<JWSAlgorithm, AlgoProperties> supportedAlgoMap;
+  @Getter private static Map<JWSAlgorithm, AlgoProperties> supportedAlgoMap;
   private static List<JWSAlgorithm.Family> supportedAlgoTypes = Arrays.asList(JWSAlgorithm.Family.RSA, JWSAlgorithm.Family.EC);
   private static Map<String, String> supportedDigestAlgoMap;
 
@@ -61,10 +61,10 @@ public class SVTAlgoRegistry {
     putDefaultAlgo(JWSAlgorithm.ES256, ALGO_ID_SIGNATURE_ECDSA_SHA256, ALGO_ID_DIGEST_SHA256, DIGEST_ALGO_NAME_SHA256);
     putDefaultAlgo(JWSAlgorithm.ES384, ALGO_ID_SIGNATURE_ECDSA_SHA384, ALGO_ID_DIGEST_SHA384, DIGEST_ALGO_NAME_SHA384);
     putDefaultAlgo(JWSAlgorithm.ES512, ALGO_ID_SIGNATURE_ECDSA_SHA512, ALGO_ID_DIGEST_SHA512, DIGEST_ALGO_NAME_SHA512);
-    getSupportedAlgoMap();
+    initalizeAlgoMap();
   }
 
-  private static void getSupportedAlgoMap() {
+  private static void initalizeAlgoMap() {
     supportedDigestAlgoMap = new HashMap<>();
     supportedAlgoMap.keySet().stream().forEach(jwsAlgorithm -> {
       AlgoProperties algoProperties = supportedAlgoMap.get(jwsAlgorithm);
@@ -152,7 +152,7 @@ public class SVTAlgoRegistry {
   public static boolean registerSupportedJWSAlgorithm(JWSAlgorithm algorithm, String sigAlgoId, String digestAlgoId,
     String digestInstanceName) throws IllegalArgumentException {
     putDefaultAlgo(algorithm, sigAlgoId, digestAlgoId, digestInstanceName);
-    getSupportedAlgoMap();
+    initalizeAlgoMap();
     return true;
   }
 
