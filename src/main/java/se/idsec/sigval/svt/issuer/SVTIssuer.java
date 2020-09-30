@@ -44,7 +44,7 @@ public abstract class SVTIssuer<T extends Object> {
       throw new NoSuchAlgorithmException("Selected JWT algorithm is not supported");
     }
     this.jwsAlgorithm = algorithm;
-    this.signer = SVTAlgoRegistry.getSigner(jwsAlgorithm, privateKey);
+    this.signer = SVTAlgoRegistry.getSigner(jwsAlgorithm, privateKey, certificates.get(0).getPublicKey());
     this.certificates = certificates;
   }
 

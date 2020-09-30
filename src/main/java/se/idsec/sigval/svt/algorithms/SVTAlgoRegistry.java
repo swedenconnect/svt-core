@@ -6,6 +6,7 @@ import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.ECDSASigner;
 import com.nimbusds.jose.crypto.Ed25519Signer;
 import com.nimbusds.jose.crypto.RSASSASigner;
+import com.nimbusds.jose.jwk.Curve;
 import com.nimbusds.jose.jwk.OctetKeyPair;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,11 @@ import lombok.Getter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
 import java.security.interfaces.ECPrivateKey;
+import java.security.interfaces.ECPublicKey;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -186,15 +191,21 @@ public class SVTAlgoRegistry {
    * @throws IllegalArgumentException if the provided parameters are not supported
    * @throws JOSEException            on error
    */
-  public static JWSSigner getSigner(JWSAlgorithm jwsAlgorithm, Object privateKey) throws IllegalArgumentException, JOSEException {
+  public static JWSSigner getSigner(JWSAlgorithm jwsAlgorithm, Object privateKey, PublicKey publicKey) throws IllegalArgumentException, JOSEException {
     JWSAlgorithm.Family type = getAlgoFamilyFromAlgo(jwsAlgorithm);
-    if (type.equals(JWSAlgorithm.Family.EC) && privateKey instanceof ECPrivateKey) {
-      return new ECDSASigner((ECPrivateKey) privateKey);
+    if (
+      type.equals(JWSAlgorithm.Family.EC) &&
+        privateKey instanceof PrivateKey &&
+        "EC".equalsIgnoreCase(((PrivateKey)privateKey).getAlgorithm()) &&
+        publicKey instanceof ECPublicKey
+    ) {
+      return new ECDSASigner((PrivateKey)privateKey, Curve.forECParameterSpec(((ECPublicKey)publicKey).getParams()));
     }
+
     if (type.equals(JWSAlgorithm.Family.ED) && privateKey instanceof OctetKeyPair) {
       return new Ed25519Signer((OctetKeyPair) privateKey);
     }
-    if (type.equals(JWSAlgorithm.Family.RSA) && privateKey instanceof PrivateKey) {
+    if (type.equals(JWSAlgorithm.Family.RSA) && privateKey instanceof PrivateKey && "RSA".equalsIgnoreCase(((PrivateKey)privateKey).getAlgorithm())) {
       return new RSASSASigner((PrivateKey) privateKey);
     }
     throw new IllegalArgumentException("Unsupported algorithm and key combination");
