@@ -191,11 +191,15 @@ public abstract class SVTValidator<T extends Object> {
    * Checks that the signer certificate chain in the SVT matches the signed document. The SVT issuer may have used an entirely different set
    * of certificates to verify the signature than the set provided with the signature. This may be a result of using for example a national
    * TSL (Trust service Status List) to select a trusted trust anchor rather than a trust anchor provided with the signature.
-   * This process therfore use the following logic:
+   * This process therefore use the following logic:
+   *
    * <ul>
    *   <li>If the SVT contains a full chain, then this chain will be stored in the result as the evaluated chain with no further checks.</li>
    *   <li>If the SVT contains cert hash and chain hash, then these must match the certificates from the signed document</li>
    * </ul>
+   *
+   * <p>Important update 2020-10-23: Fixing the chain_hash issue means that the chain_hash is an array of hashes of individual certs
+   * starting from the signing cert and ending with the TA cert </p>
    *
    * @param svtCertRef         the certificate reference data from the SVT
    * @param signatureCertChain the certificates provided with the signature
@@ -225,40 +229,38 @@ public abstract class SVTValidator<T extends Object> {
       }
     case chain_hash:
       /*
-      Process is to first check the signer certificate hash. If this is the only hash, then store this cert also as the chain.
-      If a chain is present, then check the chain.
+       * New process is to loop all cert hashes individually and locate the matching cert from the chain
+       * Updated 2020-10-23
        */
       try {
-        String certHash = certRefList.get(0);
-        Optional<byte[]> sigCertBytesOptional = signatureCertChain.stream()
-          .filter(bytes -> matchHashString(Arrays.asList(bytes), certHash, jwsAlgorithm))
-          .findFirst();
-
-        if (!sigCertBytesOptional.isPresent()) {
-          result.setMessage("The signer certificate does not match the provided cert hash");
-          return false;
+        List<byte[]> chain = new ArrayList<>();
+        for (int i = 0; i<certRefList.size(); i++) {
+          String certRefB64Hash = certRefList.get(i);
+          Optional<byte[]> sigCertBytesOptional = signatureCertChain.stream()
+            .filter(bytes -> matchHashString(Arrays.asList(bytes), certRefB64Hash, jwsAlgorithm))
+            .findFirst();
+          if (!sigCertBytesOptional.isPresent()) {
+            // All certificates MUST be present in the signature. This one didn't
+            if (i == 0){
+              // This is the signer certificate
+              result.setMessage("The signer certificate does not match the provided cert hash");
+            } else {
+              // This was a supporting chain certificate
+              result.setMessage("A certificate reference hash does not match any signature certificate");
+            }
+            return false;
+          }
+          // The cert matched certs in the signature
+          if (i == 0) {
+            // This is the signer certificate
+            result.setSignerCertificate(sigCertBytesOptional.get());
+          }
+          chain.add(sigCertBytesOptional.get());
         }
-        result.setSignerCertificate(sigCertBytesOptional.get());
-
-        if (certRefList.size() < 2) {
-          // This is the only cert hash. Store this as the chain and exit
-          result.setCertificateChain(Arrays.asList(result.getSignerCertificate()));
-          return true;
-        }
-
-        // There is also a chain hash. Check the chain and store chain certs
-        String chainHash = certRefList.get(1);
-        if (!matchHashString(signatureCertChain, chainHash, jwsAlgorithm)) {
-          // Signer chain mismatch
-          result.setMessage("The signer certificate chain does not match the provided chain hash");
-          return false;
-        }
-        // Chain hash match. Store results
-        result.setCertificateChain(signatureCertChain);
+        // Reaching this point means that we successfully matched all certificates with certs in the signature. Store result
+        result.setCertificateChain(chain);
         return true;
-
-      }
-      catch (Exception ex) {
+      } catch (Exception ex){
         result.setMessage("Certificate matching caused exception: " + ex.getMessage());
         return false;
       }
@@ -268,6 +270,13 @@ public abstract class SVTValidator<T extends Object> {
     }
   }
 
+  /**
+   * Compares a collection of bytes with a base64encoded hash
+   * @param byteList bytes to compare
+   * @param b64MatchString base64 encoded hash value
+   * @param jwsAlgorithm the algorithm used to select hash algorithm
+   * @return true on match
+   */
   private boolean matchHashString(List<byte[]> byteList, String b64MatchString, JWSAlgorithm jwsAlgorithm) {
     try {
       MessageDigest messageDigest = SVTAlgoRegistry.getMessageDigestInstance(jwsAlgorithm);
