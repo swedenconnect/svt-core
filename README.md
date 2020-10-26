@@ -21,6 +21,6 @@ This project is currently not deployed at maven central. The source code must be
 
 ```
 
-**##### API documentation
+##### API documentation
 
 Java API documentation for [se.idsec.sigval:svt-base](https://idsec-solutions.github.io/sig-validation-svt/javadoc).
