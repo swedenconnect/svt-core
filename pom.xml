@@ -36,7 +36,7 @@
                     <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
                     <windowtitle>Signature Validation Token - Base - ${project.version}</windowtitle>
                     <links>
-                        <link>https://idsec-solutions.github.io/signservice-commons/javadoc/signservice-commons/</link>
+                        <link>https://idsec-solutions.github.io/sig-validation-svt/javadoc/signservice-commons/</link>
                     </links>
                 </configuration>
             </plugin>
