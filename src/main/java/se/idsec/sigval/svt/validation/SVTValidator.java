@@ -21,6 +21,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Abstract class implementing a validator for signatures supported by a Signature Validation Token (SVT)
+ * @param <T> The type of signature data used in the implementation of this class
+ */
 @Slf4j
 @Getter
 @NoArgsConstructor
@@ -29,16 +33,19 @@ public abstract class SVTValidator<T extends Object> {
   /**
    * Extract relevant data from the signature necessary to validate its consistency with a SVT record.
    *
+   * @param signedDataInput signed data input providing information about the signature
    * @return a list of {@link SignatureSVTData} object. One for each signature to validate.
+   * @throws Exception On errors extracting signature SVT data
    */
   protected abstract List<SignatureSVTData> getSignatureSVTData(T signedDataInput) throws Exception;
 
   /**
    * Override this method to implement custom signature validation
    *
-   * @param signatureSVTData
-   * @param hashAlgorithm
-   * @throws RuntimeException
+   * @param signatureSVTData Signatrue SVT data collected during default signature validation
+   * @param hashAlgorithm The hash algorithm used to hash data in the SVT
+   * @param result result from SVT validation of signature
+   * @throws RuntimeException On errors during custom signature validation
    */
   public void customSignatureSVTValidation(SignatureSVTData signatureSVTData, String hashAlgorithm, SignatureSVTValidationResult result)
     throws RuntimeException {
@@ -52,6 +59,7 @@ public abstract class SVTValidator<T extends Object> {
    *
    * @param svtCertRef   Certificate reference data from the SVT
    * @param sigCertChain Certificates obtained from the signature in the order they appear in the signature
+   * @param result result from SVT validation of signature
    * @return true if certificates match
    */
   protected boolean customCertificateRefCheck(CertReferenceClaims svtCertRef, List<byte[]> sigCertChain,
@@ -61,6 +69,9 @@ public abstract class SVTValidator<T extends Object> {
 
   /**
    * The main validation method. Validates all SVT records and store the results.
+   *
+   * @param signedDataInput signature input data
+   * @return validation result from SVT signature validation
    */
   public List<SignatureSVTValidationResult> validate(T signedDataInput) {
     List<SignatureSVTValidationResult> results = new ArrayList<>();

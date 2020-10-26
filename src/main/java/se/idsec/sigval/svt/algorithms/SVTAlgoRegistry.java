@@ -135,7 +135,7 @@ public class SVTAlgoRegistry {
    * Register a new supported JWS algorithm family
    *
    * @param family Famliy to register
-   * @return
+   * @return true if the new algorithm was registered
    */
   public static boolean registerSupportedJWSAlgorithmType(JWSAlgorithm.Family family) {
     if (supportedAlgoTypes.contains(family)) {
@@ -187,6 +187,7 @@ public class SVTAlgoRegistry {
    *
    * @param jwsAlgorithm the JWS algorithm
    * @param privateKey   the suitable private key object for this algorithm type
+   * @param publicKey    the public key associated with the private signing key
    * @return {@link JWSSigner}
    * @throws IllegalArgumentException if the provided parameters are not supported
    * @throws JOSEException            on error

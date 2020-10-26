@@ -34,8 +34,8 @@ public abstract class SVTIssuer<T extends Object> {
    * @param algorithm the algorithm used to sign the SVT as well as selecting the Hash algorithm used to generate SVT hash values
    * @param privateKey private key used to sign the SVT
    * @param certificates certificates supporting the SVT signature
-   * @throws NoSuchAlgorithmException
-   * @throws JOSEException
+   * @throws NoSuchAlgorithmException if the requested algorithm is not supported
+   * @throws JOSEException exception processing JOSE data
    */
   public SVTIssuer(JWSAlgorithm algorithm, Object privateKey, List<X509Certificate> certificates)
     throws NoSuchAlgorithmException, JOSEException {
@@ -51,7 +51,9 @@ public abstract class SVTIssuer<T extends Object> {
   /**
    * Verifies the signed document and generates the SVT claims
    * @param signedDataInput signed data input for the signatures being validated
+   * @param hashAlgoUri hash algorithm URI identifier
    * @return a list of {@link SignatureClaims} objects for each validated signature
+   * @throws Exception on errors performing signature validation
    */
   protected abstract List<SignatureClaims> verify(T signedDataInput, String hashAlgoUri) throws Exception;
 

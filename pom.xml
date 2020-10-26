@@ -28,6 +28,18 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
+                    <windowtitle>Signature Validation Token - Base - ${project.version}</windowtitle>
+                    <links>
+                        <link>https://idsec-solutions.github.io/signservice-commons/javadoc/signservice-commons/</link>
+                    </links>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <name>Signature Validation Token - Bas</name>
