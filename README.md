@@ -1,6 +1,6 @@
 ![Logo](https://github.com/idsec-solutions/idsec-solutions.github.io/blob/master/img/idsec.png)
 
-# Signature Validatioin Token
+# Signature Validation Token
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
