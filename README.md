@@ -1,8 +1,8 @@
-![Logo](https://github.com/idsec-solutions/idsec-solutions.github.io/blob/master/img/idsec.png) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base)
+![Logo](https://github.com/idsec-solutions/idsec-solutions.github.io/blob/master/img/idsec.png) 
 
 # Signature Validation Token
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base)
 
 Core components for generation and validation of Signature Validation Tokens (SVT) providing the following core features:
 
