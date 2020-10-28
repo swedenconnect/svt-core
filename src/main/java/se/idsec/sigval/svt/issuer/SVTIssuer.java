@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2020 IDsec Solutions AB
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package se.idsec.sigval.svt.issuer;
 
 import com.nimbusds.jose.*;
@@ -115,8 +130,6 @@ public abstract class SVTIssuer<T extends Object> {
       }
     }
 
-    JWTClaimsSet claims = getSvtJwtClaims(svtClaims, model);
-
     // Assemble and sign
     SignedJWT signedJWT = new SignedJWT(
       new JWSHeader(
@@ -203,7 +216,7 @@ public abstract class SVTIssuer<T extends Object> {
     if (o instanceof String && ((String) o).trim().isEmpty()) {
       throw new IllegalArgumentException(desc + " has an empty value");
     }
-    if (o instanceof List && ((List) o).isEmpty()) {
+    if (o instanceof List && ((List<?>) o).isEmpty()) {
       throw new IllegalArgumentException(desc + " has no values");
     }
   }
