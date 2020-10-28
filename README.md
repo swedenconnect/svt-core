@@ -1,4 +1,4 @@
-![Logo](https://github.com/idsec-solutions/idsec-solutions.github.io/blob/master/img/idsec.png)
+![Logo](https://github.com/idsec-solutions/idsec-solutions.github.io/blob/master/img/idsec.png) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base)
 
 # Signature Validation Token
 
@@ -7,14 +7,12 @@
 Core components for generation and validation of Signature Validation Tokens (SVT) providing the following core features:
 
 - Java classes representing the claims of SVT tokens.
-- Abstract SVT isuer providing core functions for issueing SVT tokens.
+- Abstract SVT isuer providing core functions for issuing SVT tokens.
 - Abstract SVT validator provising core functions for validating signatures based on SVT tokens
 
 ---
 
 ## Maven
-
-This project is currently not deployed at maven central. The source code must be built locally and then imported to your project as:
 
 ```
 <dependency>
