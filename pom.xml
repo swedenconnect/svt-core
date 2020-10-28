@@ -7,7 +7,7 @@
   <groupId>se.idsec.sigval</groupId>
   <artifactId>svt-base</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
 
   <name>IDsec Solutions :: Signature Validation :: SVT</name>
   <description>Signature Validation Token support</description>
@@ -225,6 +225,7 @@
           <additionalJOptions>
             <additionalJOption>-Xdoclint:all</additionalJOption>
             <additionalJOption>-Xdoclint:-missing</additionalJOption>
+            <additionalJOption>--frames</additionalJOption>            
           </additionalJOptions>
           <detectJavaApiLink>true</detectJavaApiLink>
           <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
@@ -293,7 +294,7 @@
                 <goals>
                   <goal>jar</goal>
                 </goals>
-              </execution>
+              </execution>              
             </executions>
             <configuration>
               <sourcepath>target/generated-sources/delombok</sourcepath>
@@ -302,6 +303,7 @@
               <additionalJOptions>
                 <additionalJOption>-Xdoclint:all</additionalJOption>
                 <additionalJOption>-Xdoclint:-missing</additionalJOption>
+                <additionalJOption>--frames</additionalJOption>
               </additionalJOptions>
               <detectJavaApiLink>true</detectJavaApiLink>
               <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
