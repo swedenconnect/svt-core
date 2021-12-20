@@ -46,7 +46,7 @@ Older versions:
 
 ##### API documentation
 
-Java API documentation for [se.swedenconnect.sigval:svt-base](https://docs.swedenconnect.se/svt-core/javadoc).
+Java API documentation for [se.swedenconnect.sigval:svt-core](https://docs.swedenconnect.se/svt-core/javadoc).
 
 ---
 
