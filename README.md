@@ -44,9 +44,12 @@ Older versions:
 </dependency>
 ```
 
+<!--
 ##### API documentation
 
 Java API documentation for [se.swedenconnect.sigval:svt-core](https://docs.swedenconnect.se/svt-core/javadoc).
+
+-->
 
 ---
 

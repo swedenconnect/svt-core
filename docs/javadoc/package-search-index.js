@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"se.idsec.sigval.svt.algorithms"},{"l":"se.idsec.sigval.svt.claims"},{"l":"se.idsec.sigval.svt.enums"},{"l":"se.idsec.sigval.svt.issuer"},{"l":"se.idsec.sigval.svt.validation"}]
