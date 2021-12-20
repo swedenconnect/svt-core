@@ -1,4 +1,4 @@
-![Logo](https://idsec-solutions.github.io/signservice-integration-api/img/idsec.png) 
+![Logo](https://raw.githubusercontent.com/swedenconnect/technical-framework/master/img/sweden-connect.png) 
 
 # Signature Validation Token
 
@@ -25,8 +25,8 @@ Core components for generation and validation of Signature Validation Tokens (SV
 
 ##### API documentation
 
-Java API documentation for [se.idsec.sigval:svt-base](https://idsec-solutions.github.io/sig-validation-svt/javadoc).
+Java API documentation for [se.idsec.sigval:svt-base](https://docs.swedenconnect.se/sig-validation-svt/javadoc).
 
 ---
 
-Copyright &copy; 2019-2020, [IDsec Solutions AB](http://www.idsec.se). Licensed under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+Copyright &copy; [The Swedish Agency for Digital Government (DIGG)](https://www.digg.se), 2019-2021. All Rights Reserved.
