@@ -15,27 +15,42 @@
  */
 package se.idsec.sigval.svt;
 
-import com.nimbusds.jose.JWSAlgorithm;
-import com.nimbusds.jwt.JWTClaimsSet;
-import com.nimbusds.jwt.SignedJWT;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Before;
-import org.junit.Test;
-import se.idsec.sigval.svt.claims.*;
-import se.idsec.sigval.svt.enums.SignerKeyStore;
-import se.idsec.sigval.svt.enums.TestData;
-import se.idsec.sigval.svt.issuer.SVTIssuer;
-import se.idsec.sigval.svt.issuer.SVTModel;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.Security;
 import java.security.cert.X509Certificate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.nimbusds.jose.JWSAlgorithm;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
+
+import se.idsec.sigval.svt.claims.CertReferenceClaims;
+import se.idsec.sigval.svt.claims.PolicyValidationClaims;
+import se.idsec.sigval.svt.claims.SVTProfile;
+import se.idsec.sigval.svt.claims.SigReferenceClaims;
+import se.idsec.sigval.svt.claims.SignatureClaims;
+import se.idsec.sigval.svt.claims.SignedDataClaims;
+import se.idsec.sigval.svt.claims.ValidationConclusion;
+import se.idsec.sigval.svt.enums.SignerKeyStore;
+import se.idsec.sigval.svt.enums.TestData;
+import se.idsec.sigval.svt.issuer.SVTIssuer;
+import se.idsec.sigval.svt.issuer.SVTModel;
 
 public class SVTIssuanceTests {
 
@@ -100,7 +115,7 @@ public class SVTIssuanceTests {
     try {
       SignedJWT signedSvtJWT = svtIssuer.getSignedSvtJWT(new byte[] {}, model);
 
-      String headerJson = signedSvtJWT.getHeader().toJSONObject().toJSONString();
+      String headerJson = signedSvtJWT.getHeader().toString();
       JWTClaimsSet jwtClaimsSet = signedSvtJWT.getJWTClaimsSet();
       String jwtid = jwtClaimsSet.getJWTID();
       BigInteger jtiInt = new BigInteger(jwtid, 16);
@@ -122,7 +137,7 @@ public class SVTIssuanceTests {
       String iatStr = String.valueOf(issueTime.getTime() / 1000);
       String expStr = expirationTime == null ? "NULL" : String.valueOf(expirationTime.getTime() / 1000);
 
-      String claimsJson = jwtClaimsSet.toJSONObject().toJSONString();
+      String claimsJson = jwtClaimsSet.toString();
 
       switch (idx) {
       case 0:
