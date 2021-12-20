@@ -18,7 +18,7 @@ Core components for generation and validation of Signature Validation Tokens (SV
 - Abstract SVT isuer providing core functions for issuing SVT tokens.
 - Abstract SVT validator provising core functions for validating signatures based on SVT tokens
 
-**Note**: This library has been moved to the [swedenconnect](https://github.com/swedenconnect) organization from [idsec-solutions](https://github.com/idsec-solutions). Artifact and package names have also been changed from `idsec` to `swedenconnect`. During the move, the artifact-id was changed from `svt-base` to `svt-core`.
+**Note**: This library has been moved to the [swedenconnect](https://github.com/swedenconnect) organization from [idsec-solutions](https://github.com/idsec-solutions) where it was named "sig-validation-svt". Artifact and package names have also been changed from `idsec` to `swedenconnect`. During the move, the artifact-id was changed from `svt-base` to `svt-core`.
 
 ---
 
@@ -46,7 +46,7 @@ Older versions:
 
 ##### API documentation
 
-Java API documentation for [se.swedenconnect.sigval:svt-base](https://docs.swedenconnect.se/sig-validation-svt/javadoc).
+Java API documentation for [se.swedenconnect.sigval:svt-base](https://docs.swedenconnect.se/svt-core/javadoc).
 
 ---
 
