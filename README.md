@@ -1,8 +1,8 @@
 ![Logo](https://raw.githubusercontent.com/swedenconnect/technical-framework/master/img/sweden-connect.png) 
 
-# Signature Validation Token
+# Signature Validation Token Core
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-base)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-core)
 
 <!-- 
 
@@ -18,7 +18,7 @@ Core components for generation and validation of Signature Validation Tokens (SV
 - Abstract SVT isuer providing core functions for issuing SVT tokens.
 - Abstract SVT validator provising core functions for validating signatures based on SVT tokens
 
-**Note**: This library has been moved to the [swedenconnect](https://github.com/swedenconnect) organization from [idsec-solutions](https://github.com/idsec-solutions). Artifact and package names have also been changed from `idsec` to `swedenconnect`.
+**Note**: This library has been moved to the [swedenconnect](https://github.com/swedenconnect) organization from [idsec-solutions](https://github.com/idsec-solutions). Artifact and package names have also been changed from `idsec` to `swedenconnect`. During the move, the artifact-id was changed from `svt-base` to `svt-core`.
 
 ---
 
@@ -29,7 +29,7 @@ From version 1.1.0 and onwards:
 ```
 <dependency>
     <groupId>se.swedenconnect.sigval</groupId>
-    <artifactId>svt-base</artifactId>
+    <artifactId>svt-core</artifactId>
     <version>${svt-base.version}</version>
 </dependency>
 ```
