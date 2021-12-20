@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 IDsec Solutions AB
+ * Copyright (c) 2019-2021 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,15 @@
 package se.idsec.sigval.svt.enums;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum DefaultCertRefType {
   chain, chain_hash, UNKNOWN;
 
-  public static DefaultCertRefType getCertRefType(String type) {
-    if (type == null){
-      return DefaultCertRefType.UNKNOWN;
-    }
-    Optional<DefaultCertRefType> typeOptional = Arrays.stream(values())
-      .filter(defaultCertRefType -> type.equalsIgnoreCase(defaultCertRefType.name()))
-      .findFirst();
-
-    return typeOptional.isPresent() ? typeOptional.get() : DefaultCertRefType.UNKNOWN;
+  public static DefaultCertRefType getCertRefType(final String type) {
+    return Arrays.stream(values())
+      .filter(d -> d.name().equalsIgnoreCase(type))
+      .findFirst()
+      .orElse(UNKNOWN);
   }
 
 }

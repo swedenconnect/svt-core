@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 IDsec Solutions AB
+ * Copyright (c) 2019-2021 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class SVTModel {
+
   /**
    * The unique identifier of the SVT issuer.
    * 
-   * @param svtIssuerId the SVT issuer ID
+   * @param svtIssuerId
+   *          the SVT issuer ID
    * @return the SVT issuer ID
    */
   private String svtIssuerId;
@@ -46,7 +48,8 @@ public class SVTModel {
    * The validity period of the SVT expressed in milliseconds. A {@code null} value results in an absent expiration
    * date.
    * 
-   * @param validityPeriod validity of SVT is milliseconds
+   * @param validityPeriod
+   *          validity of SVT is milliseconds
    * @return validity of SVT is milliseconds or null
    */
   private Long validityPeriod;
@@ -54,7 +57,8 @@ public class SVTModel {
   /**
    * A list of identifiers of intended audiences.
    * 
-   * @param audience ID:s for intended audiences
+   * @param audience
+   *          ID:s for intended audiences
    * @return ID:s for intended audiences
    */
   private List<String> audience;
@@ -63,7 +67,8 @@ public class SVTModel {
    * A value of {@code true} means that the certificates will be referenced by an identifier equal to the hash of the
    * certificate.
    * 
-   * @param certRef whether certificates will be referenced using certificate hashes
+   * @param certRef
+   *          whether certificates will be referenced using certificate hashes
    * @return whether certificates will be referenced using certificate hashes
    */
   @Builder.Default
