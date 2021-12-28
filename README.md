@@ -2,15 +2,8 @@
 
 # Signature Validation Token Core
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.idsec.sigval/svt-core)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base) 
 
-<!-- 
-
-Use when 1.1.0 is released ...
-
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base) 
-
--->
 
 Core components for generation and validation of Signature Validation Tokens (SVT) providing the following core features:
 
@@ -44,12 +37,9 @@ Older versions:
 </dependency>
 ```
 
-<!--
 ##### API documentation
 
-Java API documentation for [se.swedenconnect.sigval:svt-core](https://docs.swedenconnect.se/svt-core/javadoc).
-
--->
+Java API documentation for [se.swedenconnect.sigval:svt-core](https://docs.swedenconnect.se/svt-core/javadoc/).
 
 ---
 
