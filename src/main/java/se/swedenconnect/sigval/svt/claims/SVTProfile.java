@@ -16,5 +16,5 @@
 package se.swedenconnect.sigval.svt.claims;
 
 public enum SVTProfile {
-  PDF,XML;
+  PDF,XML,JWS;
 }
