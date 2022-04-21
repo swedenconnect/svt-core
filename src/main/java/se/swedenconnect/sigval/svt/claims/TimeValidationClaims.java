@@ -32,6 +32,7 @@ public class TimeValidationClaims {
   private String type;
   private String iss;
   private String id;
+  private String hash;
   private List<PolicyValidationClaims> val;
   private Map<String, String> ext;
 }
