@@ -7,7 +7,7 @@
   <groupId>se.swedenconnect.sigval</groupId>
   <artifactId>svt-core</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.1.1</version>
 
   <name>Sweden Connect :: Signature Validation :: SVT</name>
   <description>Signature Validation Token Core</description>
@@ -206,7 +206,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.2</version>
         <configuration>
           <sourcepath>target/generated-sources/delombok</sourcepath>
           <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
