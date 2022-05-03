@@ -211,8 +211,7 @@
           <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
           <additionalJOptions>
             <additionalJOption>-Xdoclint:all</additionalJOption>
-            <additionalJOption>-Xdoclint:-missing</additionalJOption>
-            <additionalJOption>--frames</additionalJOption>            
+            <additionalJOption>-Xdoclint:-missing</additionalJOption>         
           </additionalJOptions>
           <detectJavaApiLink>true</detectJavaApiLink>
           <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
@@ -290,7 +289,6 @@
               <additionalJOptions>
                 <additionalJOption>-Xdoclint:all</additionalJOption>
                 <additionalJOption>-Xdoclint:-missing</additionalJOption>
-                <additionalJOption>--frames</additionalJOption>
               </additionalJOptions>
               <detectJavaApiLink>true</detectJavaApiLink>
               <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
