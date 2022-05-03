@@ -7,7 +7,7 @@
   <groupId>se.swedenconnect.sigval</groupId>
   <artifactId>svt-core</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.1.1</version>
 
   <name>Sweden Connect :: Signature Validation :: SVT</name>
   <description>Signature Validation Token Core</description>
@@ -70,7 +70,7 @@
       <dependency>
         <groupId>se.idsec.signservice.commons</groupId>
         <artifactId>signservice-bom</artifactId>
-        <version>1.1.1</version>
+        <version>1.2.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -93,7 +93,6 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.36</version>
     </dependency>
 
     <dependency>
@@ -118,7 +117,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.2</version>
     </dependency>
 
   </dependencies>
@@ -206,15 +204,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.2</version>
         <configuration>
           <sourcepath>target/generated-sources/delombok</sourcepath>
           <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
           <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
           <additionalJOptions>
             <additionalJOption>-Xdoclint:all</additionalJOption>
-            <additionalJOption>-Xdoclint:-missing</additionalJOption>
-            <additionalJOption>--frames</additionalJOption>            
+            <additionalJOption>-Xdoclint:-missing</additionalJOption>         
           </additionalJOptions>
           <detectJavaApiLink>true</detectJavaApiLink>
           <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
@@ -292,7 +289,6 @@
               <additionalJOptions>
                 <additionalJOption>-Xdoclint:all</additionalJOption>
                 <additionalJOption>-Xdoclint:-missing</additionalJOption>
-                <additionalJOption>--frames</additionalJOption>
               </additionalJOptions>
               <detectJavaApiLink>true</detectJavaApiLink>
               <doctitle>Signature Validation Token - Base - ${project.version}</doctitle>
