@@ -15,48 +15,41 @@
  */
 package se.swedenconnect.sigval.svt.enums;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import com.nimbusds.jose.util.IOUtils;
+
+import lombok.Getter;
+
+@Getter
 public class TestData {
 
-  public static final String JSON_CLAIMS_0 = "{\"aud\":\"http:\\/\\/example.com\\/audience1\",\"iss\":\"https:\\/\\/example.com\\/svt-issuer\","
-    + "\"exp\":###EXP###,\"iat\":###IAT###,\"jti\":\"###JWTID###\",\"sig_val_claims\":{\"sig\":[{\"ext\":null,"
-    + "\"sig_val\":[{\"msg\":\"Passed basic validation\",\"ext\":null,\"res\":\"PASSED\",\"pol\":\"http:\\/\\/id.swedenconnect.se\\/svt\\/sigval-policy\\/chain\\/01\"}],"
-    + "\"sig_ref\":{\"sig_hash\":\"Vdypzu0SfeCiB+FNDicTHbq7e8oKKET+1nWgC+jzyZgjmGOfWXi\\/5\\/3El0WmnNJfZ65E+eLjkpeA8gWH23UNVw==\",\"id\":null,"
-    + "\"sb_hash\":\"3GHV73gElWk1yPZRjFtCPtEfEAGRX\\/kaJWL3I5fm43tkFo3+1FKdqIA6apYFZz7xT2awj\\/zvWudHa4OyBaP7aA==\"},"
-    + "\"signer_cert_ref\":{\"ref\":[\"NSuFM\\/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVGbla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==\"],\"type\":\"chain_hash\"},"
-    + "\"sig_data_ref\":[{\"ref\":\"0 74697 79699 37908\",\"hash\":\"Tw3rePgAhYSHtccYJyRRSzSqEIWMKktI5NWJPzf+KJ1CDUDrmHpO9RSKvwdMForF0gYNAvzuUpEYCzJxgKvSaw==\"}],"
-    + "\"time_val\":[]}],\"ext\":null,\"ver\":\"1.0\",\"profile\":\"XML\",\"hash_algo\":\"http:\\/\\/www.w3.org\\/2001\\/04\\/xmlenc#sha256\"}}";
-  public static final String JSON_CLAIMS_2 = "{\"aud\":\"http:\\/\\/example.com\\/audience1\",\"iss\":\"https:\\/\\/example.com\\/svt-issuer\","
-    + "\"exp\":###EXP###,\"iat\":###IAT###,\"jti\":\"###JWTID###\",\"sig_val_claims\":{\"sig\":[{\"ext\":null,"
-    + "\"sig_val\":[{\"msg\":\"Passed basic validation\",\"ext\":null,\"res\":\"PASSED\",\"pol\":\"http:\\/\\/id.swedenconnect.se\\/svt\\/sigval-policy\\/chain\\/01\"}],"
-    + "\"sig_ref\":{\"sig_hash\":\"Vdypzu0SfeCiB+FNDicTHbq7e8oKKET+1nWgC+jzyZgjmGOfWXi\\/5\\/3El0WmnNJfZ65E+eLjkpeA8gWH23UNVw==\",\"id\":null,"
-    + "\"sb_hash\":\"3GHV73gElWk1yPZRjFtCPtEfEAGRX\\/kaJWL3I5fm43tkFo3+1FKdqIA6apYFZz7xT2awj\\/zvWudHa4OyBaP7aA==\"},"
-    + "\"signer_cert_ref\":{\"ref\":[\"NSuFM\\/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVGbla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==\"],\"type\":\"chain_hash\"},"
-    + "\"sig_data_ref\":[{\"ref\":\"0 74697 79699 37908\",\"hash\":\"Tw3rePgAhYSHtccYJyRRSzSqEIWMKktI5NWJPzf+KJ1CDUDrmHpO9RSKvwdMForF0gYNAvzuUpEYCzJxgKvSaw==\"}],"
-    + "\"time_val\":[]}],\"ext\":null,\"ver\":\"1.0\",\"profile\":\"XML\",\"hash_algo\":\"http:\\/\\/www.w3.org\\/2001\\/04\\/xmldsig-more#sha384\"}}";
-  public static final String JSON_CLAIMS_3 = "{\"aud\":\"http:\\/\\/example.com\\/audience1\",\"iss\":\"https:\\/\\/example.com\\/svt-issuer\","
-    + "\"exp\":###EXP###,\"iat\":###IAT###,\"jti\":\"###JWTID###\",\"sig_val_claims\":{\"sig\":[{\"ext\":null,"
-    + "\"sig_val\":[{\"msg\":\"Passed basic validation\",\"ext\":null,\"res\":\"PASSED\",\"pol\":\"http:\\/\\/id.swedenconnect.se\\/svt\\/sigval-policy\\/chain\\/01\"}],"
-    + "\"sig_ref\":{\"sig_hash\":\"Vdypzu0SfeCiB+FNDicTHbq7e8oKKET+1nWgC+jzyZgjmGOfWXi\\/5\\/3El0WmnNJfZ65E+eLjkpeA8gWH23UNVw==\",\"id\":null,"
-    + "\"sb_hash\":\"3GHV73gElWk1yPZRjFtCPtEfEAGRX\\/kaJWL3I5fm43tkFo3+1FKdqIA6apYFZz7xT2awj\\/zvWudHa4OyBaP7aA==\"},"
-    + "\"signer_cert_ref\":{\"ref\":[\"NSuFM\\/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVGbla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==\"],\"type\":\"chain_hash\"},"
-    + "\"sig_data_ref\":[{\"ref\":\"0 74697 79699 37908\",\"hash\":\"Tw3rePgAhYSHtccYJyRRSzSqEIWMKktI5NWJPzf+KJ1CDUDrmHpO9RSKvwdMForF0gYNAvzuUpEYCzJxgKvSaw==\"}],"
-    + "\"time_val\":[]}],\"ext\":null,\"ver\":\"1.0\",\"profile\":\"XML\",\"hash_algo\":\"http:\\/\\/www.w3.org\\/2001\\/04\\/xmlenc#sha512\"}}";
-  public static final String JSON_CLAIMS_4 = "{\"aud\":\"http:\\/\\/example.com\\/audience1\",\"iss\":\"https:\\/\\/example.com\\/svt-issuer\","
-    + "\"iat\":###IAT###,\"jti\":\"###JWTID###\",\"sig_val_claims\":{\"sig\":[{\"ext\":null,"
-    + "\"sig_val\":[{\"msg\":\"Passed basic validation\",\"ext\":null,\"res\":\"PASSED\",\"pol\":\"http:\\/\\/id.swedenconnect.se\\/svt\\/sigval-policy\\/chain\\/01\"}],"
-    + "\"sig_ref\":{\"sig_hash\":\"Vdypzu0SfeCiB+FNDicTHbq7e8oKKET+1nWgC+jzyZgjmGOfWXi\\/5\\/3El0WmnNJfZ65E+eLjkpeA8gWH23UNVw==\",\"id\":null,"
-    + "\"sb_hash\":\"3GHV73gElWk1yPZRjFtCPtEfEAGRX\\/kaJWL3I5fm43tkFo3+1FKdqIA6apYFZz7xT2awj\\/zvWudHa4OyBaP7aA==\"},"
-    + "\"signer_cert_ref\":{\"ref\":[\"NSuFM\\/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVGbla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==\"],\"type\":\"chain_hash\"},"
-    + "\"sig_data_ref\":[{\"ref\":\"0 74697 79699 37908\",\"hash\":\"Tw3rePgAhYSHtccYJyRRSzSqEIWMKktI5NWJPzf+KJ1CDUDrmHpO9RSKvwdMForF0gYNAvzuUpEYCzJxgKvSaw==\"}],"
-    + "\"time_val\":[]}],\"ext\":null,\"ver\":\"1.0\",\"profile\":\"PDF\",\"hash_algo\":\"http:\\/\\/www.w3.org\\/2001\\/04\\/xmlenc#sha512\"}}";
+  private final String jsonClaims0;
+  private final String jsonClaims2;
+  private final String jsonClaims3;
+  private final String jsonClaims4;
+  private final String jsonHeader0;
+  private final String jsonHeader2;
+  private final String jsonHeader3;
+  private final String jsonHeader4;
 
-  public static final String JSON_HEADER_0 = "{\"kid\":\"RWyt9kpS5WPgUD+Dlkyvoff80MgeaSNS7XINA950RV0=\",\"typ\":\"JWT\",\"alg\":\"RS256\"}";
-  public static final String JSON_HEADER_2 = "{\"kid\":\"8CXpdadi7sJej6FLSNP04Jp\\/ozra1maTRlILD89sBXK7sFhi4VQ5acBuofY\\/VGy0\",\"typ\":\"JWT\",\"alg\":\"PS384\"}";
-  public static final String JSON_HEADER_3 = "{\"kid\":\"NSuFM\\/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVGbla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==\",\"typ\":\"JWT\",\"alg\":\"PS512\"}";
-  public static final String JSON_HEADER_4 = "{\"x5c\":[\"MIIB6TCCAUugAwIBAgIEXHAXuDAKBggqhkjOPQQDAjA5MQswCQYDVQQGEwJTRTEOMAwGA1UECgwFSURzZW"
-    + "MxGjAYBgNVBAMMEU9wZW5TQU1MIEVDQyBUZXN0MB4XDTE5MDIyMjE1MzkzNloXDTIwMDIyMjE1MzkzNlowOTELMAkGA1UEBhMCU0UxDjAMBgNVBAoMBUlEc2VjMRowGAYDVQQD"
-    + "DBFPcGVuU0FNTCBFQ0MgVGVzdDCBmzAQBgcqhkjOPQIBBgUrgQQAIwOBhgAEAZwDANVSXP5eNwOV98Z9aqzN\\/wHZAUi8ajuc0pSm0lII5vAMpSEvkybTzSWEd\\/dRDPuRbn"
-    + "G1qwuRxDzBIqWocHG6AG0cldhLVCl4vV3T89PUAL9dGRb18uWnwTUOYbu9c8ZyuE79YOwfjIJsqKA\\/PBccpi2Dg3519o6S2IywxWNHNPwKMAoGCCqGSM49BAMCA4GLADCBhw"
-    + "JCANcQxmeQ4n8zY2lqrtjho9MQKmbYuOzoWz5Jo\\/4d+9OORZ0U9Q0z8D+IEtKT4ddDfoUL0b0oCGOV7O0xc3jzLlANAkE8k4vV087cb4Z6KX2QtNEHf1qYoyEyb5QKYnu8kj"
-    + "FkvFkhQ7Vq3GDQF3dGkL26FEaSL0g6CvpYGzb3e\\/cqWozF5g==\"],\"typ\":\"JWT\",\"alg\":\"ES512\"}";
+  public TestData() throws IOException {
+    jsonClaims0 = getResourceString("json-claims-0");
+    jsonClaims2 = getResourceString("json-claims-2");
+    jsonClaims3 = getResourceString("json-claims-3");
+    jsonClaims4 = getResourceString("json-claims-4");
+
+    jsonHeader0 = getResourceString("json-header-0");
+    jsonHeader2 = getResourceString("json-header-2");
+    jsonHeader3 = getResourceString("json-header-3");
+    jsonHeader4 = getResourceString("json-header-4");
+
+  }
+
+  private String getResourceString(String resourceName) throws IOException {
+    InputStream resourceAsStream = getClass().getResourceAsStream("/test-data/" + resourceName + ".json");
+    return IOUtils.readInputStreamToString(resourceAsStream);
+  }
 }
+
