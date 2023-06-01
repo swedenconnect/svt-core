@@ -15,10 +15,7 @@
  */
 package se.swedenconnect.sigval.svt;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
+import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.Security;
@@ -33,8 +30,9 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jwt.JWTClaimsSet;
@@ -52,11 +50,16 @@ import se.swedenconnect.sigval.svt.enums.TestData;
 import se.swedenconnect.sigval.svt.issuer.SVTIssuer;
 import se.swedenconnect.sigval.svt.issuer.SVTModel;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class SVTIssuanceTests {
 
-  @Before
-  public void init() {
+  private static TestData testData;
+
+  @BeforeAll
+  public static void init() throws IOException {
     Security.addProvider(new BouncyCastleProvider());
+    testData = new TestData();
   }
 
   @Test
@@ -119,19 +122,19 @@ public class SVTIssuanceTests {
       JWTClaimsSet jwtClaimsSet = signedSvtJWT.getJWTClaimsSet();
       String jwtid = jwtClaimsSet.getJWTID();
       BigInteger jtiInt = new BigInteger(jwtid, 16);
-      assertTrue("JWT ID is to short", jtiInt.bitLength() > 120);
+      assertTrue(jtiInt.bitLength() > 120, "JWT ID is to short");
 
       Date issueTime = jwtClaimsSet.getIssueTime();
       Date expirationTime = jwtClaimsSet.getExpirationTime();
       //Test issue time
-      assertTrue("Issue time is too soon", issueTime.after(new Date(System.currentTimeMillis() - 10000)));
-      assertTrue("Issue time is too late", issueTime.before(new Date(System.currentTimeMillis() + 10000)));
+      assertTrue(issueTime.after(new Date(System.currentTimeMillis() - 10000)), "Issue time is too soon");
+      assertTrue(issueTime.before(new Date(System.currentTimeMillis() + 10000)), "Issue time is too late");
       if (expirationTime != null) {
         Calendar validTo = Calendar.getInstance();
         validTo.add(Calendar.YEAR, 1);
-        assertTrue("Expiration time is too soon", expirationTime.after(validTo.getTime()));
+        assertTrue(expirationTime.after(validTo.getTime()), "Expiration time is too soon");
         validTo.add(Calendar.MONTH, 1);
-        assertTrue("Expiration time is too late", expirationTime.before(validTo.getTime()));
+        assertTrue(expirationTime.before(validTo.getTime()), "Expiration time is too late");
       }
 
       String iatStr = String.valueOf(issueTime.getTime() / 1000);
@@ -141,36 +144,36 @@ public class SVTIssuanceTests {
 
       switch (idx) {
       case 0:
-        assertEquals("Wrong SVT JOSE Header content", TestData.JSON_HEADER_0, headerJson);
-        assertEquals("Wrong SVT JOSE Claims content", TestData.JSON_CLAIMS_0
+        JSONAssert.assertEquals(testData.getJsonHeader0(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonClaims0()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson);
+          , claimsJson, false);
         break;
       case 2:
-        assertEquals("Wrong SVT JOSE Header content", TestData.JSON_HEADER_2, headerJson);
-        assertEquals("Wrong SVT JOSE Claims content", TestData.JSON_CLAIMS_2
+        JSONAssert.assertEquals(testData.getJsonHeader2(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonClaims2()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson);
+          , claimsJson, false);
         break;
       case 3:
-        assertEquals("Wrong SVT JOSE Header content", TestData.JSON_HEADER_3, headerJson);
-        assertEquals("Wrong SVT JOSE Claims content", TestData.JSON_CLAIMS_3
+        JSONAssert.assertEquals(testData.getJsonHeader3(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonClaims3()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson);
+          , claimsJson, false);
         break;
       case 4:
-        assertEquals("Wrong SVT JOSE Header content", TestData.JSON_HEADER_4, headerJson);
-        assertEquals("Wrong SVT JOSE Claims content", TestData.JSON_CLAIMS_4
+        JSONAssert.assertEquals(testData.getJsonHeader4(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonClaims4()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson);
+          , claimsJson, false);
         break;
       default:
         fail("The present test case should have failed with a thrown exception");
