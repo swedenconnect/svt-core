@@ -144,36 +144,36 @@ public class SVTIssuanceTests {
 
       switch (idx) {
       case 0:
-        JSONAssert.assertEquals(testData.getJsonHeader0(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonHeader0(), headerJson, true);
         JSONAssert.assertEquals(testData.getJsonClaims0()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson, false);
+          , claimsJson, true);
         break;
       case 2:
-        JSONAssert.assertEquals(testData.getJsonHeader2(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonHeader2(), headerJson, true);
         JSONAssert.assertEquals(testData.getJsonClaims2()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson, false);
+          , claimsJson, true);
         break;
       case 3:
-        JSONAssert.assertEquals(testData.getJsonHeader3(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonHeader3(), headerJson, true);
         JSONAssert.assertEquals(testData.getJsonClaims3()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson, false);
+          , claimsJson, true);
         break;
       case 4:
-        JSONAssert.assertEquals(testData.getJsonHeader4(), headerJson, false);
+        JSONAssert.assertEquals(testData.getJsonHeader4(), headerJson, true);
         JSONAssert.assertEquals(testData.getJsonClaims4()
             .replace("###JWTID###", jwtid)
             .replace("###IAT###", iatStr)
             .replace("###EXP###", expStr)
-          , claimsJson, false);
+          , claimsJson, true);
         break;
       default:
         fail("The present test case should have failed with a thrown exception");
