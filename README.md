@@ -2,7 +2,7 @@
 
 # Signature Validation Token Core
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-base) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.swedenconnect.sigval/svt-core) 
 
 
 Core components for generation and validation of Signature Validation Tokens (SVT) providing the following core features:
@@ -23,7 +23,7 @@ From version 1.1.0 and onwards:
 <dependency>
     <groupId>se.swedenconnect.sigval</groupId>
     <artifactId>svt-core</artifactId>
-    <version>${svt-base.version}</version>
+    <version>${svt-core.version}</version>
 </dependency>
 ```
 
