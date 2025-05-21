@@ -42,4 +42,4 @@ Java API documentation for [se.swedenconnect.sigval:svt-core](https://docs.swede
 
 ---
 
-Copyright &copy; [The Swedish Agency for Digital Government (DIGG)](https://www.digg.se), 2019-2024. All Rights Reserved.
+Copyright &copy; [The Swedish Agency for Digital Government (DIGG)](https://www.digg.se), 2019-2025. All Rights Reserved.
