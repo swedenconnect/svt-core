@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2021 Sweden Connect
+ * Copyright 2019-2025 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import lombok.Getter;
 /**
  * Registry for SVT supported algorithms. This class adds support for the minimum supported set of algorithms and allows
  * new algorithms to be added. By default only RSA and ECDSA with SHA 245, 384 and 512 are supported.
- * 
+ *
  * @author Martin Lindström (martin@idsec.se)
  * @author Stefan Santesson (stefan@idsec.se)
  */
