@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -78,6 +78,12 @@
         <scope>import</scope>
       </dependency>
 
+      <dependency>
+        <groupId>com.nimbusds</groupId>
+        <artifactId>nimbus-jose-jwt</artifactId>
+        <version>10.3</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -101,7 +107,6 @@
     <dependency>
       <groupId>com.nimbusds</groupId>
       <artifactId>nimbus-jose-jwt</artifactId>
-      <version>10.0.2</version>
     </dependency>
 
     <!-- Test -->
@@ -142,11 +147,6 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.21.0</version>
       </plugin>
@@ -160,7 +160,7 @@
             <id>enforce</id>
             <configuration>
               <rules>
-                <dependencyConvergence />
+                <dependencyConvergence/>
               </rules>
             </configuration>
             <goals>
@@ -214,8 +214,6 @@
 
     <profile>
       <id>release</id>
-
-      <!-- See http://central.sonatype.org/pages/apache-maven.html for setup -->
 
       <build>
         <plugins>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2021 Sweden Connect
+ * Copyright 2019-2025 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 /**
  * This is the data model for an SVT issuing request and holds parameters that are not derived from the signature
  * validation process or from the general JWT token parameters (such as selected signing algorithm and hash algorithm).
- * 
+ *
  * @author Martin Lindström (martin@idsec.se)
  * @author Stefan Santesson (stefan@idsec.se)
  */
@@ -37,7 +37,7 @@ public class SVTModel {
 
   /**
    * The unique identifier of the SVT issuer.
-   * 
+   *
    * @param svtIssuerId
    *          the SVT issuer ID
    * @return the SVT issuer ID
@@ -47,7 +47,7 @@ public class SVTModel {
   /**
    * The validity period of the SVT expressed in milliseconds. A {@code null} value results in an absent expiration
    * date.
-   * 
+   *
    * @param validityPeriod
    *          validity of SVT is milliseconds
    * @return validity of SVT is milliseconds or null
@@ -56,7 +56,7 @@ public class SVTModel {
 
   /**
    * A list of identifiers of intended audiences.
-   * 
+   *
    * @param audience
    *          ID:s for intended audiences
    * @return ID:s for intended audiences
@@ -66,7 +66,7 @@ public class SVTModel {
   /**
    * A value of {@code true} means that the certificates will be referenced by an identifier equal to the hash of the
    * certificate.
-   * 
+   *
    * @param certRef
    *          whether certificates will be referenced using certificate hashes
    * @return whether certificates will be referenced using certificate hashes

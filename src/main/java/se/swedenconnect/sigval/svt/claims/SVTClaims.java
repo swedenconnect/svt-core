@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2021 Sweden Connect
+ * Copyright 2019-2025 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ public class SVTClaims {
 
   /**
    * The version of the claim.
-   * 
+   *
    * @param ver
    *          the version
    * @return the version
@@ -47,7 +47,7 @@ public class SVTClaims {
 
   /**
    * The SVT profile.
-   * 
+   *
    * @param profile
    *          the SVT profile
    * @return the SVT profile
@@ -56,7 +56,7 @@ public class SVTClaims {
 
   /**
    * The hash algorithm.
-   * 
+   *
    * @param hash_algo
    *          the hash algorithm
    * @return the hash algorithm
@@ -65,7 +65,7 @@ public class SVTClaims {
 
   /**
    * The signature claims.
-   * 
+   *
    * @param sig
    *          the signature claims
    * @return the signature claims
@@ -74,7 +74,7 @@ public class SVTClaims {
 
   /**
    * Extensions.
-   * 
+   *
    * @param ext
    *          extensions
    * @return extensions

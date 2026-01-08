@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2021 Sweden Connect
+ * Copyright 2019-2025 Sweden Connect
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ public abstract class SVTIssuer<T extends Object> {
    */
   public SVTIssuer(final JWSAlgorithm algorithm, final Object privateKey, final List<X509Certificate> certificates)
       throws NoSuchAlgorithmException, JOSEException {
-    
+
     // Check that the selected algorithm is supported
     if (!SVTAlgoRegistry.isAlgoSupported(algorithm)) {
       throw new NoSuchAlgorithmException("Selected JWT algorithm is not supported");
