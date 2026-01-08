@@ -7,7 +7,7 @@
   <groupId>se.swedenconnect.sigval</groupId>
   <artifactId>svt-core</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
 
   <name>Sweden Connect :: Signature Validation :: SVT</name>
   <description>Signature Validation Token Core</description>
@@ -67,7 +67,7 @@
       <dependency>
         <groupId>org.bouncycastle</groupId>
         <artifactId>bcprov-jdk18on</artifactId>
-        <version>1.80</version>
+        <version>1.83</version>
       </dependency>
 
       <dependency>
@@ -113,7 +113,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.12.2</version>
+      <version>5.13.4</version>
       <scope>test</scope>
     </dependency>
 
@@ -180,7 +180,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.12</version>
+        <version>0.8.13</version>
         <executions>
           <execution>
             <goals>
@@ -193,7 +193,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.11.2</version>
+        <version>3.11.3</version>
         <configuration>
           <doclint>all,-missing</doclint>
           <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
@@ -224,7 +224,7 @@
           <plugin>
             <groupId>org.sonatype.central</groupId>
             <artifactId>central-publishing-maven-plugin</artifactId>
-            <version>0.7.0</version>
+            <version>0.9.0</version>
             <extensions>true</extensions>
             <configuration>
               <publishingServerId>central</publishingServerId>
