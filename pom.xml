@@ -7,7 +7,7 @@
   <groupId>se.swedenconnect.sigval</groupId>
   <artifactId>svt-core</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
 
   <name>Sweden Connect :: Signature Validation :: SVT</name>
   <description>Signature Validation Token Core</description>
