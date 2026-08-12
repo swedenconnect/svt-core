@@ -49,6 +49,16 @@ public abstract class SVTValidator<T extends Object> {
   /**
    * Extract relevant data from the signature necessary to validate its consistency with a SVT record.
    *
+   * <p>
+   * <b>Trust contract:</b> this validator checks the <em>signature against the SVT</em> (that the signature and signed
+   * data match the SVT's hash references) - it does <b>not</b> validate the SVT token itself. Verifying the SVT's JWS
+   * signature and establishing that the SVT signer is trusted is the responsibility of the implementation, because that
+   * requires trust configuration (a certificate validator / trust anchors) that this format-agnostic base class does
+   * not, and should not, hold. Implementations MUST therefore return {@link SignatureSVTData} only for SVTs whose JWS
+   * signature has been cryptographically verified and whose signer has been established as trusted. Returning data from
+   * an unverified or untrusted SVT will cause this class to report a successful result for a forged token.
+   * </p>
+   *
    * @param signedDataInput signed data input providing information about the signature
    * @return a list of {@link SignatureSVTData} object. One for each signature to validate.
    * @throws Exception On errors extracting signature SVT data
@@ -85,6 +95,12 @@ public abstract class SVTValidator<T extends Object> {
 
   /**
    * The main validation method. Validates all SVT records and store the results.
+   *
+   * <p>
+   * Note: this method validates the signature against the SVT (matching the SVT hash references), and assumes the SVT
+   * token itself has already been verified and trusted by the {@link #getSignatureSVTData(Object)} implementation - see
+   * the trust contract documented on that method. This method does not verify the SVT JWS signature.
+   * </p>
    *
    * @param signedDataInput signature input data
    * @return validation result from SVT signature validation
